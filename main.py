@@ -1,36 +1,42 @@
-import time 
-import random
-
-print("Motor Circut Simulation Lab")
+import time
 
 results = []
 
 for i in range(10): 
 
-    print("\n----------------------")
-    print(f"Trial {i+1}") # the thing that needs to be changed
+    print(f"\nTrial {i+1}")
 
-    # wait before stimmmm pls work 
-    time.sleep(random.uniform(1.5, 3))
+    time.sleep(1)
 
-print("Get ready...")
+    print("Get ready...")
 
-time.sleep(random.uniform(1, 2))
+    time.sleep(2)
+    
+    print("GO!")
 
-print("GO!")
+    start = time.time()
 
-start = time.time()
-input() # this has to be the user reaction
-end = time.time()
+    input("Press Enter NOW")
 
-rt = end - start
-results.append(rt)
+    end = time.time()
 
-print(f"Reaction time: {rt: .3f} seconds")
+    reaction_time = end - start 
 
-# hope this pauses before the next trial
-print("Next trial starting soon...")
-time.sleep(2)
+    # saving part hopefully 
 
-print("\n EXPERIMENT COMPLETE")
-print("Average reaction time:", sum(results) / len(results))
+    results.append(reaction_time)
+
+    print(f"Reaction Time: {reaction_time} seconds")
+
+    time.sleep(1)
+
+    print("\n Experiment Complete")
+
+    average = sum(results) / len(results)
+
+    print(f"Average Reaction Time: {average:.3f} seconds")
+
+    print("\nAll Reaction Times:")
+
+    for r in results: 
+        print(f"{r:.3f}")
