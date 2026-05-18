@@ -1,0 +1,118 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>Motor Circuit Simulator</title>
+
+    <style>
+        body { 
+            background-color: #0b0f14;
+            color: #00ff9d;
+            font-family: "Courier New", monospace;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            padding: 30px
+        }
+
+        h1 { 
+            color: #00ff9d;
+            border-bottom: 1px sold #00ff9d;
+            padding-bottom: 10px;
+        }
+
+        .panel {
+            background: #111836;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid #00ff9d;
+            border-radius: 8px;
+        }
+
+        button { 
+            background: black;
+            color: #00ff9d;
+            border: 1px solid #00ff9d; 
+            padding: 10px 15px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background: #00ff9d;
+            color: black;
+        }
+
+        #output { 
+            margin-top: 20px;
+            white-space: pre-line;
+        }
+        
+        .label { 
+            color: #7affc6;
+            font-size: 14px
+        }
+
+    </style>
+
+</head>
+
+<body> 
+    <div class="container">
+        <h1>Motor Circuit Simulation Lab</h1>
+
+        <div class="panel">
+            <p class="label">Experiment Controls</p>
+            
+            <button onclick="startExperiment()">Start Experiment</button>
+            <buttom on click="showResults()">Show Results</button>
+            <div id="output"></div>
+        </div>
+    </div>
+
+<script>
+    let results = [];
+
+    function startExperiment() {
+        results = [];
+        runTrial(1);
+    }
+    
+    function runTrial(i) { 
+        if (1 > 10) {
+            document.getElementById("output").innerText = 
+            "Experiment Complete\nAll Trials Finished.";
+            return;
+        }
+
+        document.getElementById("output").innerText = 
+        "Trial " + i + "\nStatus: Preparing...";
+
+        let delay = Math.random() * 2000 + 1000;
+
+        setTimeout(() => { 
+            document.getElementById("output").innerText = 
+            "Trial " + i + "\n STIMULUS: GO";
+
+            let start = Date.now();
+
+            document.body.onclick = function () {
+                let rt = (Date.now() -  start) / 1000; 
+                results.push(rt);
+
+                document.body.onclick = null;
+
+                document.getElementById("output").innerText = 
+                "Trial " + i + "\nReaction Time: " + rt.toFixed(3) + "s";
+
+                setTimeout(() => runTrial(i + 1), 1200);
+            };
+        }, delay);
+    }
+
+</script>
+
+</body>
+
+</html>
