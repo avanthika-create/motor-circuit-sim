@@ -60,7 +60,7 @@ with open("results.txt", "w") as f:
     f.write("Motor Circuit Simulation Results\n\n")
 
     for i, r in enumerate(results):
-        f.write(f"Trial {i+1}: {r:.3f} seconds\n")
+        f.write(f"Trial {i+1}: {r:.3f} seconds")
 
     f.write(f"\nAverage: {average:.3f} seconds\n")
     f.write(f"Fastest: {fastest:.3f} second\n")
