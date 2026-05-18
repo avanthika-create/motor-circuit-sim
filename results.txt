@@ -1,2 +1,16 @@
-Motor Circut Simulation Results
+Motor Circuit Simulation Results
 
+Trial 1: 0.524 seconds
+Trial 2: 0.476 seconds
+Trial 3: 0.494 seconds
+Trial 4: 0.478 seconds
+Trial 5: 0.513 seconds
+Trial 6: 0.581 seconds
+Trial 7: 0.475 seconds
+Trial 8: 0.720 seconds
+Trial 9: 0.719 seconds
+Trial 10: 1.140 seconds
+
+Average: 0.612 seconds
+Fastest: 0.475 second
+Slowest: 1.140 seconds

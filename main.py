@@ -1,4 +1,5 @@
 import time
+import random
 
 results = []
 mode = input("Choose mode (normal / low_dopamine / unstable):")
@@ -56,10 +57,12 @@ for i in range(10):
         print(f"{r:.3f}")
 
 with open("results.txt", "w") as f: 
-    f.write("Motor Circut Simulation Results\n\n")
+    f.write("Motor Circuit Simulation Results\n\n")
 
-    for i in enumerate(results):
-        f.write(f"Trial {i+1}: {r: .3f} seconds\n")
+    for i, r in enumerate(results):
+        f.write(f"Trial {i+1}: {r:.3f} seconds\n")
 
-        avg = sum(results) / len(results)
-        f.write(f"\nAverage: {avg:.3f} seconds\n")
+    f.write(f"\nAverage: {average:.3f} seconds\n")
+    f.write(f"Fastest: {fastest:.3f} second\n")
+    f.write(f"Slowest: {slowest:.3f} seconds\n")
+        
