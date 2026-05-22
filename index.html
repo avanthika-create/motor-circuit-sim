@@ -3,6 +3,8 @@
 <head> 
     <title>Motor Circuit Simulator</title>
 
+// style css
+
     <style>
         body { 
             background-color: #0b0f14;
@@ -71,6 +73,7 @@
         </div>
     </div>
 
+
 <script>
     let results = [];
 
@@ -79,58 +82,58 @@
         runTrial(1);
     }
     
-    function runTrial(i) { 
-        if (1 > 10) {
-            document.getElementById("output").innerText = 
-            "Experiment Complete\nAll Trials Finished.";
-            return;
-        }
+function runTrial(i) {
 
-        document.getElementById("output").innerText = 
-        "Trial " + i + "\nStatus: Preparing...";
-
-        let delay = Math.random() * 2000 + 1000;
-
-        setTimeout(() => { 
-            document.getElementById("output").innerText = 
-            "Trial " + i + "\n STIMULUS: GO";
-
-            let start = Date.now();
-
-            document.getElementById("output").onclick = function () {
-                let rt = (Date.now() -  start) / 1000; 
-                results.push(rt);
-
-                document.getElementById("output").onclick = null;
-
-                document.getElementById("output").innerText = 
-                "Trial " + i + "\nReaction Time: " + rt.toFixed(3) + "s";
-
-                setTimeout(() => runTrial(i + 1), 1200);
-            };
-        }, delay);
+    if (i > 10) {
+        showResults();
+        return;
     }
-function showResults() {
-    if (results.length === 0) {
+
+    document.getElementById("output").innerText =
+        "Trial " + i + "\nPreparing...";
+
+    setTimeout(() => {
+
         document.getElementById("output").innerText =
-        "No data yet. Run experiment first.";
-    return;
-    }
+            "Trial " + i + "\nGO! Click the button";
+
+        const start = Date.now();
+
+        const button = document.createElement("button");
+        button.innerText = "CLICK NOW";
+        document.body.appendChild(button);
+
+        button.onclick = function () {
+
+            const rt = (Date.now() - start) / 1000;
+            results.push(rt);
+
+            document.body.removeChild(button);
+
+            document.getElementById("output").innerText =
+                "Trial " + i + "\nReaction: " + rt.toFixed(3) + "s";
+
+            setTimeout(() => runTrial(i + 1), 1000);
+        };
+
+    }, Math.random() * 2000 + 1000);
 }
 
-let avg = result.reduce((a,b) => a + b) / results.length;
+function showResults(){
+
+let avg = results.reduce((a, b) => a + b) / results.length;
 let min = Math.min(...results);
-let max= Math.max(...results); 
+let max = Math.max(...results);
 
-document.getElementById("output").innertext =
-    "FINAL REPORT\n\n" +
-    "Average: " + avg.toFixed(3) + "s\n" + 
-    "Fastest: " + min.toFixed(3) + "s\n" + 
-    "Slowest: " + max.toFixed(3) + "s\n\n" + 
-    results.map((r, i) =>
-    "Trial " + (i+1) + ": " + r.toFixed(3) + "s"
-).join("\n");
-
+document.getElementById("output").innerText = 
+    "FINAL REPORT\n\n" + 
+            "Average: " + avg.toFixed(3) + "s\n" +
+        "Fastest: " + min.toFixed(3) + "s\n" +
+        "Slowest: " + max.toFixed(3) + "s\n\n" +
+        results.map((r, i) =>
+            "Trial " + (i + 1) + ": " + r.toFixed(3) + "s"
+        ).join("\n");
+}
 
 </script>
 
