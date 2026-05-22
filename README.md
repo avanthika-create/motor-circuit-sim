@@ -1,1 +1,1 @@
-A reaction time simulator, made with only Python, which models brain circuit behavior under different levels of dopamine. Small AI usage to clean mistakes.
+A reaction time simulator, first tested with Python, then visualized with HTML, CSS, and Javascript. This models motor circuit behavior under different levels of dopamine. Small AI usage to clean mistakes.
